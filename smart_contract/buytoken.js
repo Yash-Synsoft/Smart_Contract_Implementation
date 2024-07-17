@@ -5,17 +5,17 @@ const provider = new ethers.providers.JsonRpcProvider(
   "https://eth-sepolia.g.alchemy.com/v2/utolIPXsUJOqQETyX0Zs6iefoh76EK8r"
 );
 
-const walletPrivateKey = "4477af51d49cb98ee71a21a9586aaf96876601ee1b5e2f719b9fec36484bdeb6"; // Replace with your wallet's private key
+const walletPrivateKey = "4477af51d49cb98ee71a21a9586aaf96876601ee1b5e2f719b9fec36484bdeb6"; 
 const wallet = new ethers.Wallet(walletPrivateKey, provider);
 
-const contractAddress = "0xc0CF827Fc0e0723da4A715B4BE571163eA7dbe74"; // Replace with your deployed contract address
+const contractAddress = "0xc0CF827Fc0e0723da4A715B4BE571163eA7dbe74"; 
 const contractABI = contractJSON.abi;
 const contract = new ethers.Contract(contractAddress, contractABI, wallet);
 
 async function buyTokens(amountInEther) {
   try {
     const tx = await contract.buyTokens({
-      value: ethers.utils.parseEther(amountInEther.toString()), // Convert Ether amount to Wei
+      value: ethers.utils.parseEther(amountInEther.toString()),
       gasLimit: 100000, // Adjust gas limit as needed
     });
 
